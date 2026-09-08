@@ -20,10 +20,25 @@
                     },
                     colors: {
                         brand: {
-                            50: '#f0fdfa',
-                            500: '#14b8a6', // Teal
+                            400: '#2dd4bf', // Neon Teal
+                            500: '#14b8a6', 
                             600: '#0d9488',
                             900: '#134e4a',
+                            950: '#042f2e',
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         }
                     }
                 }
@@ -31,124 +46,156 @@
         }
     </script>
     <style>
-        /* Custom subtle gradient background */
         body {
-            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-            color: #1e293b;
+            background-color: #020617; /* Slate 950 */
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        /* Radial gradient for the background */
+        .bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(45,212,191,0.15) 0%, rgba(2,6,23,0) 70%);
+            top: -200px;
+            right: -100px;
+            z-index: -1;
+            border-radius: 50%;
         }
         .phone-mockup {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 20px 40px -10px rgba(45, 212, 191, 0.4), 0 0 0 4px #1e293b;
             border-radius: 2.5rem;
-            border: 8px solid #ffffff;
+            background-color: #0f172a;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="antialiased min-h-screen flex flex-col relative z-0">
+
+    <div class="bg-glow"></div>
 
     <!-- Navigation -->
-    <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
-        <div class="text-2xl font-extrabold text-brand-600 tracking-tight">Out Loud.</div>
-        <div class="hidden md:flex space-x-6">
-            <a href="#about" class="text-gray-600 hover:text-brand-600 font-semibold transition">About</a>
-            <a href="#preview" class="text-gray-600 hover:text-brand-600 font-semibold transition">App Preview</a>
+    <nav class="container mx-auto px-6 py-8 flex justify-between items-center relative z-10">
+        <div class="text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
+            <i class="fa-solid fa-wave-square text-brand-400"></i> Out Loud.
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="#about" class="text-slate-400 hover:text-brand-400 font-semibold transition-colors duration-300">About</a>
+            <a href="#preview" class="text-slate-400 hover:text-brand-400 font-semibold transition-colors duration-300">Sneak Peek</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <main class="flex-grow container mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center">
+    <main class="flex-grow container mx-auto px-6 py-12 md:py-24 flex flex-col md:flex-row items-center relative z-10">
         <!-- Text & Waitlist Form -->
-        <div class="md:w-1/2 md:pr-12 mb-12 md:mb-0">
-            <span class="bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase border border-brand-500/30">
+        <div class="md:w-1/2 md:pr-12 mb-16 md:mb-0">
+            <div class="inline-block bg-brand-500/10 border border-brand-500/20 text-brand-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(45,212,191,0.2)]">
                 Coming Soon
-            </span>
-            <h1 class="text-5xl md:text-6xl font-extrabold mt-6 mb-6 leading-tight text-gray-900">
-                One-Minute Affirmations, <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-600">Face to Face.</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-[1.1] text-white">
+                Speak your truth. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-500">Face to Face.</span>
             </h1>
-            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                Transform your mindset in just 60 seconds. Look yourself in the eye and speak your truth out loud, or choose a calming theme for guided, non-camera sessions. 
+            <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed font-light max-w-lg">
+                Transform your mindset in just 60 seconds. Look yourself in the eye and speak out loud, or choose a calming theme for a guided, non-camera session. 
             </p>
             
-            <!-- Signup Form for GitHub Pages (Using Formspree) -->
-            <div class="bg-white p-2 rounded-xl shadow-lg flex flex-col sm:flex-row border border-gray-100 max-w-md">
-                <!-- IMPORTANT: Replace the action URL with your own free Formspree endpoint -->
-                <form action="https://formspree.io/f/xeaqpgdq" method="POST" class="w-full flex flex-col sm:flex-row">
-                    <input type="email" name="email" placeholder="Enter your email" required 
-                        class="flex-grow px-4 py-3 rounded-lg sm:rounded-r-none focus:outline-none focus:ring-2 focus:ring-brand-500 bg-transparent text-gray-700">
+            <!-- Signup Form for Formspree -->
+            <div class="bg-dark-900 p-1.5 rounded-2xl shadow-2xl flex flex-col sm:flex-row border border-slate-800 max-w-md relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                <form action="https://formspree.io/f/xeaqpgdq" method="POST" class="w-full flex flex-col sm:flex-row relative z-10">
+                    <input type="email" name="email" placeholder="Enter your email address..." required 
+                        class="flex-grow px-5 py-4 rounded-xl sm:rounded-r-none focus:outline-none bg-transparent text-white placeholder-slate-500">
                     <button type="submit" 
-                        class="mt-2 sm:mt-0 bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg sm:rounded-l-none font-semibold transition duration-300 shadow-md">
-                        Join Waitlist
+                        class="mt-2 sm:mt-0 bg-brand-500 hover:bg-brand-400 text-dark-950 px-8 py-4 rounded-xl font-bold transition duration-300 shadow-[0_0_20px_rgba(45,212,191,0.3)] hover:shadow-[0_0_30px_rgba(45,212,191,0.5)]">
+                        Get Early Access
                     </button>
                 </form>
             </div>
-            <p class="text-sm text-gray-500 mt-3">Sign up to get early access when we launch.</p>
+            <p class="text-xs text-slate-500 mt-4 flex items-center gap-2">
+                <i class="fa-solid fa-lock text-slate-600"></i> No spam. Unsubscribe anytime.
+            </p>
         </div>
 
         <!-- Main Hero Image/Screenshot -->
         <div class="md:w-1/2 flex justify-center relative">
-            <div class="absolute inset-0 bg-brand-500 rounded-full blur-3xl opacity-20 transform -translate-y-10 scale-110"></div>
-            <!-- Replace src with your main app screenshot -->
-            <img src="page1.png" alt="Out Loud App Interface" class="phone-mockup relative z-10 max-w-[280px] md:max-w-[320px] object-cover bg-white">
+            <!-- Decorative background elements behind phone -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-brand-500 rounded-full blur-[100px] opacity-30 animate-pulse-slow"></div>
+            
+            <img src="page1.png" alt="Out Loud App Interface" class="phone-mockup relative z-10 max-w-[260px] md:max-w-[300px] object-cover animate-float">
         </div>
     </main>
 
     <!-- About / Features Section -->
-    <section id="about" class="bg-white py-20 border-t border-gray-100">
-        <div class="container mx-auto px-6 text-center max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-900">Not Just Another Wellness App</h2>
-            <div class="grid md:grid-cols-3 gap-10">
+    <section id="about" class="py-24 relative">
+        <div class="absolute inset-0 bg-dark-900/50 border-y border-slate-800/50"></div>
+        <div class="container mx-auto px-6 text-center max-w-5xl relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-16 text-white">Not Just Another Wellness App</h2>
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-brand-50 transition border border-gray-100">
-                    <div class="text-4xl text-brand-500 mb-4"><i class="fa-solid fa-camera"></i></div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">The Camera Mode</h3>
-                    <p class="text-gray-600">See yourself on screen. The affirmation appears, and you say it out loud while making eye contact with yourself. Pure accountability.</p>
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-16 h-16 mx-auto bg-dark-950 rounded-2xl flex items-center justify-center text-3xl text-brand-400 mb-6 border border-slate-800 group-hover:border-brand-500/50 transition-colors shadow-lg">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">The Camera Mode</h3>
+                    <p class="text-slate-400 leading-relaxed">The affirmation appears, and you say it out loud while making eye contact with yourself. Pure, undeniable accountability.</p>
                 </div>
                 <!-- Feature 2 -->
-                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-brand-50 transition border border-gray-100">
-                    <div class="text-4xl text-brand-500 mb-4"><i class="fa-solid fa-stopwatch"></i></div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">1-Minute Sessions</h3>
-                    <p class="text-gray-600">Short on time? Perfect. Complete a session of 3 to 7 powerful affirmations in exactly 60 seconds.</p>
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-16 h-16 mx-auto bg-dark-950 rounded-2xl flex items-center justify-center text-3xl text-brand-400 mb-6 border border-slate-800 group-hover:border-brand-500/50 transition-colors shadow-lg">
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">1-Minute Sessions</h3>
+                    <p class="text-slate-400 leading-relaxed">Short on time? Perfect. Complete a focused session of 3 to 7 powerful affirmations in exactly 60 seconds.</p>
                 </div>
                 <!-- Feature 3 -->
-                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-brand-50 transition border border-gray-100">
-                    <div class="text-4xl text-brand-500 mb-4"><i class="fa-solid fa-leaf"></i></div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Non-Camera Themes</h3>
-                    <p class="text-gray-600">Prefer a quieter moment? Turn off the camera and select beautifully designed themes to practice your affirmations.</p>
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-16 h-16 mx-auto bg-dark-950 rounded-2xl flex items-center justify-center text-3xl text-brand-400 mb-6 border border-slate-800 group-hover:border-brand-500/50 transition-colors shadow-lg">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Non-Camera Themes</h3>
+                    <p class="text-slate-400 leading-relaxed">Prefer a quieter moment? Turn off the camera and select beautifully designed themes to practice your affirmations.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- App Screenshots Gallery -->
-    <section id="preview" class="py-20 bg-gray-900 text-white overflow-hidden">
+    <section id="preview" class="py-24 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-900 rounded-full blur-[120px] opacity-20 -z-10"></div>
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Sneak Peek</h2>
-            <p class="text-gray-400 mb-12 max-w-2xl mx-auto">A look inside the Out Loud experience.</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 text-white">A Look Inside</h2>
+            <p class="text-slate-400 mb-16 max-w-2xl mx-auto text-lg">Experience the bold, distraction-free interface of Out Loud.</p>
             
-            <div class="flex flex-wrap justify-center gap-8">
-                <!-- Placeholder 1 -->
-                <img src="page2.png" alt="Home Screen" class="rounded-3xl border-4 border-gray-700 shadow-2xl transform transition hover:-translate-y-2">
-                <!-- Placeholder 2 -->
-                <img src="page1.png" alt="Camera Mode" class="rounded-3xl border-4 border-gray-700 shadow-2xl transform transition hover:-translate-y-2 mt-0 md:mt-8">
-                <!-- Placeholder 3 -->
-                <img src="page3.png" alt="Settings" class="rounded-3xl border-4 border-gray-700 shadow-2xl transform transition hover:-translate-y-2">
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+                <img src="page2.png" alt="Home Screen" class="w-60 md:w-64 rounded-[2rem] border-[6px] border-dark-900 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform transition duration-500 hover:scale-105 hover:-translate-y-4">
+                <img src="page1.png" alt="Camera Mode" class="w-60 md:w-64 rounded-[2rem] border-[6px] border-dark-900 shadow-[0_20px_50px_rgba(45,212,191,0.2)] transform transition duration-500 hover:scale-105 hover:-translate-y-4 md:-mt-12 z-10 relative">
+                <img src="page3.png" alt="Settings" class="w-60 md:w-64 rounded-[2rem] border-[6px] border-dark-900 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform transition duration-500 hover:scale-105 hover:-translate-y-4">
             </div>
         </div>
     </section>
 
     <!-- Footer & Socials -->
-    <footer class="bg-white py-10 border-t border-gray-200 mt-auto">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <div class="text-xl font-extrabold text-gray-800 tracking-tight mb-4 md:mb-0">Out Loud.</div>
-            
-            <!-- Social Media Links -->
-            <div class="flex space-x-6 mb-4 md:mb-0">
-                <a href="#" class="text-gray-400 hover:text-brand-600 text-2xl transition"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="text-gray-400 hover:text-brand-600 text-2xl transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="text-gray-400 hover:text-brand-600 text-2xl transition"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" class="text-gray-400 hover:text-brand-600 text-2xl transition"><i class="fa-brands fa-tiktok"></i></a>
+    <footer class="border-t border-slate-800/60 bg-dark-950 mt-auto relative z-10">
+        <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-2xl font-extrabold text-white tracking-tight flex items-center gap-2">
+                <i class="fa-solid fa-wave-square text-brand-400"></i> Out Loud.
             </div>
             
-            <div class="text-gray-500 text-sm">
+            <!-- Social Media Links -->
+            <div class="flex space-x-6">
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-dark-950 transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-dark-950 transition-all duration-300"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-dark-950 transition-all duration-300"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-dark-950 transition-all duration-300"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            
+            <div class="text-slate-500 text-sm font-medium">
                 &copy; 2026 Out Loud App. All rights reserved.
             </div>
         </div>
