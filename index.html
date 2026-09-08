@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Out Loud | 1-Minute Affirmations</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            500: '#14b8a6', // Teal
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom subtle gradient background */
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            color: #1e293b;
+        }
+        .phone-mockup {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 2.5rem;
+            border: 8px solid #ffffff;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
+        <div class="text-2xl font-extrabold text-brand-600 tracking-tight">Out Loud.</div>
+        <div class="hidden md:flex space-x-6">
+            <a href="#about" class="text-gray-600 hover:text-brand-600 font-semibold transition">About</a>
+            <a href="#preview" class="text-gray-600 hover:text-brand-600 font-semibold transition">App Preview</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="flex-grow container mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center">
+        <!-- Text & Waitlist Form -->
+        <div class="md:w-1/2 md:pr-12 mb-12 md:mb-0">
+            <span class="bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase border border-brand-500/30">
+                Coming Soon
+            </span>
+            <h1 class="text-5xl md:text-6xl font-extrabold mt-6 mb-6 leading-tight text-gray-900">
+                One-Minute Affirmations, <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-600">Face to Face.</span>
+            </h1>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                Transform your mindset in just 60 seconds. Look yourself in the eye and speak your truth out loud, or choose a calming theme for guided, non-camera sessions. 
+            </p>
+            
+            <!-- Signup Form for GitHub Pages (Using Formspree) -->
+            <div class="bg-white p-2 rounded-xl shadow-lg flex flex-col sm:flex-row border border-gray-100 max-w-md">
+                <!-- IMPORTANT: Replace the action URL with your own free Formspree endpoint -->
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="w-full flex flex-col sm:flex-row">
+                    <input type="email" name="email" placeholder="Enter your email" required 
+                        class="flex-grow px-4 py-3 rounded-lg sm:rounded-r-none focus:outline-none focus:ring-2 focus:ring-brand-500 bg-transparent text-gray-700">
+                    <button type="submit" 
+                        class="mt-2 sm:mt-0 bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg sm:rounded-l-none font-semibold transition duration-300 shadow-md">
+                        Join Waitlist
+                    </button>
+                </form>
+            </div>
+            <p class="text-sm text-gray-500 mt-3">Sign up to get early access when we launch.</p>
+        </div>
+
+        <!-- Main Hero Image/Screenshot -->
+        <div class="md:w-1/2 flex justify-center relative">
+            <div class="absolute inset-0 bg-brand-500 rounded-full blur-3xl opacity-20 transform -translate-y-10 scale-110"></div>
+            <!-- Replace src with your main app screenshot -->
+            <img src="https://via.placeholder.com/300x600/14b8a6/ffffff?text=Camera+Mode+UI" alt="Out Loud App Interface" class="phone-mockup relative z-10 max-w-[280px] md:max-w-[320px] object-cover bg-white">
+        </div>
+    </main>
+
+    <!-- About / Features Section -->
+    <section id="about" class="bg-white py-20 border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-900">Not Just Another Wellness App</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-brand-50 transition border border-gray-100">
+                    <div class="text-4xl text-brand-500 mb-4"><i class="fa-solid fa-camera"></i></div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">The Camera Mode</h3>
+                    <p class="text-gray-600">See yourself on screen. The affirmation appears, and you say it out loud while making eye contact with yourself. Pure accountability.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-brand-50 transition border border-gray-100">
+                    <div class="text-4xl text-brand-500 mb-4"><i class="fa-solid fa-stopwatch"></i></div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">1-Minute Sessions</h3>
+                    <p class="text-gray-600">Short on time? Perfect. Complete a session of 3 to 7 powerful affirmations in exactly 60 seconds.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-brand-50 transition border border-gray-100">
+                    <div class="text-4xl text-brand-500 mb-4"><i class="fa-solid fa-leaf"></i></div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Non-Camera Themes</h3>
+                    <p class="text-gray-600">Prefer a quieter moment? Turn off the camera and select beautifully designed themes to practice your affirmations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots Gallery -->
+    <section id="preview" class="py-20 bg-gray-900 text-white overflow-hidden">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Sneak Peek</h2>
+            <p class="text-gray-400 mb-12 max-w-2xl mx-auto">A look inside the Out Loud experience.</p>
+            
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- Placeholder 1 -->
+                <img src="https://via.placeholder.com/250x500/1e293b/ffffff?text=Home+Screen" alt="Home Screen" class="rounded-3xl border-4 border-gray-700 shadow-2xl transform transition hover:-translate-y-2">
+                <!-- Placeholder 2 -->
+                <img src="https://via.placeholder.com/250x500/1e293b/ffffff?text=Camera+Affirmation" alt="Camera Mode" class="rounded-3xl border-4 border-gray-700 shadow-2xl transform transition hover:-translate-y-2 mt-0 md:mt-8">
+                <!-- Placeholder 3 -->
+                <img src="https://via.placeholder.com/250x500/1e293b/ffffff?text=Theme+Settings" alt="Settings" class="rounded-3xl border-4 border-gray-700 shadow-2xl transform transition hover:-translate-y-2">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Socials -->
+    <footer class="bg-white py-10 border-t border-gray-200 mt-auto">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-xl font-extrabold text-gray-800 tracking-tight mb-4 md:mb-0">Out Loud.</div>
+            
+            <!-- Social Media Links -->
+            <div class="flex space-x-6 mb-4 md:mb-0">
+                <a href="#" class="text-gray-400 hover:text-brand-600 text-2xl transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brand-600 text-2xl transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brand-600 text-2xl transition"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brand-600 text-2xl transition"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            
+            <div class="text-gray-500 text-sm">
+                &copy; 2026 Out Loud App. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
